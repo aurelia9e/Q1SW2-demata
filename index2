@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Signup Page</title>
+	<style type="text/css">
+
+	 button:hover {
+	 	background-color: [#E5D0CC];
+	 }
+		body {
+			font-family:'sans-serif;';
+			background-color:#444554;
+			margin:0;
+			padding:20px;
+		}
+		.header {
+			text-align: center;
+			padding: 20px;
+			background: #FFFFFF;
+			color:#BFACB5;
+		}
+		.container {
+			max-width: 1000px;
+			margin: 100px auto;
+			padding: 40px;
+			background: #FFF;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 1.0);
+		}
+		.container h2 {
+			text-align: center;
+			margin-bottom: 20px;
+		}
+		.container input[type="text"],
+		.container input[type="password"],
+		.container input[type="file"] {
+			width: 200;
+			padding: 20px;
+			margin: 10px 0;
+			border: 1px solid #ccc;
+			border-radius: 5px;
+			font-family: "sans-serif;";
+
+
+		}
+		.container input[type="submit"] hover {background: #BFACB5
+		}
+		.disclaimer {
+			font-size: 1.0 em;
+			color: #BFACB5;
+			margin-top: 10px;
+			text-align: center;
+			display:none;
+		}
+		.footer {
+			text-align: center;
+			margin-top: 20px;
+		} 
+		.logo {
+			display: block;
+			margin: 30px auto;
+			padding: 20px;
+			background: #fff;
+			border-radius: 10px;
+			box shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+			display: none;
+			opacity: 10;
+			transform: translateY(20px);
+			transition: opacity 10s ease, transform 10s ease;
+		}
+		.account-info.show {
+			display:block;
+			opacity: 1;
+			transform: translateY(10px);
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<h1> My Website </h1>
+	</div>
+
+	<div class="container">
+		<h2> login </h2>
+		<img id="profilepicture" src="https://static.vecteezy.com/system/resources/thumbnails/009/292/244/small/default-avatar-icon-of-social-media-user-vector.jpg" class="logo">
+			<form id="loginForm">
+				<input type="file" accept="image/*" id="fileinput" name="profilepicture">
+				<input type="text" name="username" placeholder="Username" required>
+				<input type="password" id="passwordInput" name="Password" placeholder="Password" required>
+				<p class="disclaimer" id="disclaimer"> Password must be at LEAST 8ch. long and with special characters. </p>
+				<input type="submit" value="Log in">
+			</form>
+		</div>
+
+		<div class="account-info" id="AccountInfo">
+			<h2> Your Account Info </h2>
+			<p> <em>Username</em> <span id="usernameDisplay"></span></p>
+			<p><em>Profile Picture:</em></p>
+			<img id="profileimagedisplay" src="" alt="Profile Picture" style="width:100px" style=" width: 100px; height:auto; border-radius:50%;">
+		</div>
+		<div class="Footer">
+			<h3> Aurelia Miguelle A. De Mata/9-Emerald</h3>
+		</div>
+		<script>
+			document.getElementByID('file_input').addEventListener('change', function(event)) {
+				if (file) {
+					const reader= new FileReader ();
+					reader.onload = function(e)
+					{document.getElementByID('profileImage').src = e.target.result;
+				};
+					(reader.readasDataURL(File)
+				}
+			});
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            const password = document.getElementById('passwordInput').value;
+            const username = document.getElementsByName('username')[0].value;
+            const disclaimer = document.getElementById('disclaimer');
+
+            // Password validation
+            const passwordValid = /^(?=.*[!@#$%^&*])(?=.{8,})/.test(password);
+            if (!passwordValid) {
+                disclaimer.style.display = 'block'; 
+            } else {
+                disclaimer.style.display = 'none'; 
+                
+                const accountInfo = document.getElementById('accountInfo');
+                accountInfo.classList.add('show');
+                document.getElementById('usernameDisplay').textContent = username;
+                document.getElementById('profileImageDisplay').src = document.getElementById('profileImage').src;
+                document.querySelector('.container').style.display = 'none'; 
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+
+<
